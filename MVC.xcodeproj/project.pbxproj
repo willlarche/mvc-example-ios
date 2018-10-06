@@ -115,8 +115,8 @@
 		DD08E679216906E700BD54C7 /* MVC */ = {
 			isa = PBXGroup;
 			children = (
-				DD08E6A021690B2A00BD54C7 /* Model */,
 				DD08E6A121690B4F00BD54C7 /* Home */,
+				DD08E6A021690B2A00BD54C7 /* Model */,
 				DD08E6A221690B7E00BD54C7 /* Other */,
 			);
 			path = MVC;
