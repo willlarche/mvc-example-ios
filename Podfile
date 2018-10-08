@@ -6,6 +6,9 @@ target 'MVC' do
 
   # Pods for MVC
   pod 'Alamofire'
+  pod 'AlamofireImage'
+  pod 'SwiftyJSON'
+  pod 'SwiftLint'
 
   target 'MVCTests' do
     inherit! :search_paths
