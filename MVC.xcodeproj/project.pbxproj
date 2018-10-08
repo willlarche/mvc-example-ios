@@ -17,7 +17,9 @@
 		DD08E6AA21690C2B00BD54C7 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08E6A921690C2B00BD54C7 /* Cat.swift */; };
 		DD08E6AB21690C2B00BD54C7 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08E6A921690C2B00BD54C7 /* Cat.swift */; };
 		DD08E6AD2169122B00BD54C7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08E6AC2169122B00BD54C7 /* HomeViewController.swift */; };
-		DD08E6AE2169122B00BD54C7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08E6AC2169122B00BD54C7 /* HomeViewController.swift */; };
+		DDB2019421693E00004C7DE7 /* CatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08E69C21690AFD00BD54C7 /* CatManager.swift */; };
+		DDB20197216A7025004C7DE7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DDB20196216A7025004C7DE7 /* .swiftlint.yml */; };
+		DDB20199216A7372004C7DE7 /* CatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB20198216A7372004C7DE7 /* CatViewController.swift */; };
 		E51DB77D5022ED583AE9D6E4 /* Pods_MVCTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E7037032E2DEE8EADB0951 /* Pods_MVCTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,8 @@
 		DD08E69C21690AFD00BD54C7 /* CatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatManager.swift; sourceTree = "<group>"; };
 		DD08E6A921690C2B00BD54C7 /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
 		DD08E6AC2169122B00BD54C7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		DDB20196216A7025004C7DE7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
+		DDB20198216A7372004C7DE7 /* CatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewController.swift; sourceTree = "<group>"; };
 		EF51B95FEB47571F76AE642B /* Pods-MVCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVCTests/Pods-MVCTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,7 +119,7 @@
 		DD08E679216906E700BD54C7 /* MVC */ = {
 			isa = PBXGroup;
 			children = (
-				DD08E6A121690B4F00BD54C7 /* Home */,
+				DD08E6A121690B4F00BD54C7 /* Main */,
 				DD08E6A021690B2A00BD54C7 /* Model */,
 				DD08E6A221690B7E00BD54C7 /* Other */,
 			);
@@ -140,18 +144,20 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		DD08E6A121690B4F00BD54C7 /* Home */ = {
+		DD08E6A121690B4F00BD54C7 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				DD08E67E216906E700BD54C7 /* Main.storyboard */,
 				DD08E6AC2169122B00BD54C7 /* HomeViewController.swift */,
+				DDB20198216A7372004C7DE7 /* CatViewController.swift */,
 			);
-			path = Home;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		DD08E6A221690B7E00BD54C7 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				DDB20196216A7025004C7DE7 /* .swiftlint.yml */,
 				DD08E681216906EA00BD54C7 /* Assets.xcassets */,
 				DD08E683216906EA00BD54C7 /* LaunchScreen.storyboard */,
 				DD08E67A216906E700BD54C7 /* AppDelegate.swift */,
@@ -168,6 +174,7 @@
 			buildConfigurationList = DD08E694216906EA00BD54C7 /* Build configuration list for PBXNativeTarget "MVC" */;
 			buildPhases = (
 				D6F52F0E7BDFB1E4C5469094 /* [CP] Check Pods Manifest.lock */,
+				DDB20195216A6F1B004C7DE7 /* SwiftLint */,
 				DD08E673216906E700BD54C7 /* Sources */,
 				DD08E674216906E700BD54C7 /* Frameworks */,
 				DD08E675216906E700BD54C7 /* Resources */,
@@ -246,6 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDB20197216A7025004C7DE7 /* .swiftlint.yml in Resources */,
 				DD08E685216906EA00BD54C7 /* LaunchScreen.storyboard in Resources */,
 				DD08E682216906EA00BD54C7 /* Assets.xcassets in Resources */,
 				DD08E680216906E700BD54C7 /* Main.storyboard in Resources */,
@@ -272,12 +280,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MVC/Pods-MVC-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -328,6 +340,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DDB20195216A6F1B004C7DE7 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -338,6 +368,7 @@
 				DD08E6AA21690C2B00BD54C7 /* Cat.swift in Sources */,
 				DD08E67B216906E700BD54C7 /* AppDelegate.swift in Sources */,
 				DD08E69D21690AFD00BD54C7 /* CatManager.swift in Sources */,
+				DDB20199216A7372004C7DE7 /* CatViewController.swift in Sources */,
 				DD08E6AD2169122B00BD54C7 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,7 +379,7 @@
 			files = (
 				DD08E690216906EA00BD54C7 /* MVCTests.swift in Sources */,
 				DD08E6AB21690C2B00BD54C7 /* Cat.swift in Sources */,
-				DD08E6AE2169122B00BD54C7 /* HomeViewController.swift in Sources */,
+				DDB2019421693E00004C7DE7 /* CatManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

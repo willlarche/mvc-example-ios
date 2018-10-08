@@ -9,7 +9,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-  
+
   @IBOutlet weak var apiControl: UISegmentedControl!
   @IBOutlet weak var imageTypeControl: UISegmentedControl!
 
@@ -28,6 +28,25 @@ class HomeViewController: UIViewController {
   }
 
   @IBAction func goDidTouch(_ sender: Any) {
+    var site: CatManager.CatSite
 
+    if apiControl.selectedSegmentIndex == 0 {
+      site = .randomCat
+    } else {
+      if imageTypeControl.selectedSegmentIndex == 0 {
+        site = .theCatAPI(ofType: .gif)
+      } else {
+        site = .theCatAPI(ofType: .jpg)
+      }
+    }
+
+    let catViewController = CatViewController()
+    present(catViewController, animated: true, completion: nil)
+    
+    CatManager.getCat(service: site, success: { cat in
+      catViewController.set(cat: cat, error: nil)
+    }, failure: { error in
+      catViewController.set(cat: nil, error: error)
+    })
   }
 }
