@@ -18,8 +18,11 @@ class CatViewController: UIViewController {
   }
 
   private enum StringConstants {
+    static let close = "Close"
+    static let closeComment = "Close this screen and go back to home."
     static let generalError = "Oops! No kitty."
     static let generalErrorComment = "Generic error for no cat image."
+    static let placeholderFilename = "CatPlaceholder"
   }
 
   private enum State {
@@ -40,6 +43,7 @@ class CatViewController: UIViewController {
   let catNameLabel: UILabel = {
     let catNameLabel = UILabel()
     catNameLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+    catNameLabel.textAlignment = .center
     catNameLabel.translatesAutoresizingMaskIntoConstraints = false
     return catNameLabel
   }()
@@ -47,28 +51,30 @@ class CatViewController: UIViewController {
   let catView: UIImageView = {
     let catView = UIImageView()
     catView.clipsToBounds = true
-    catView.contentMode = .scaleAspectFill
+    catView.contentMode = .scaleAspectFit
     catView.isOpaque = false
     catView.layer.cornerRadius = 8.0
+    catView.image = UIImage(named: StringConstants.placeholderFilename)
     catView.translatesAutoresizingMaskIntoConstraints = false
     return catView
   }()
 
-  let errorLabel: UILabel = {
+  let closeButton: UIButton = {
+    let closeButton = UIButton(type: .system)
+    closeButton.setTitle(NSLocalizedString(StringConstants.close,
+                                           comment: StringConstants.closeComment),
+                         for: .normal)
+    closeButton.translatesAutoresizingMaskIntoConstraints = false
+    return closeButton
+  }()
+
+ let errorLabel: UILabel = {
     let errorLabel = UILabel()
-    errorLabel.translatesAutoresizingMaskIntoConstraints = false
     errorLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
     errorLabel.text = NSLocalizedString(StringConstants.generalError,
                                         comment: StringConstants.generalErrorComment)
+    errorLabel.translatesAutoresizingMaskIntoConstraints = false
     return errorLabel
-  }()
-
-  let closeButton: UIButton = {
-    let closeButton = UIButton(type: .system)
-    closeButton.translatesAutoresizingMaskIntoConstraints = false
-    closeButton.setTitle(NSLocalizedString("Close", comment: "Close this screen and go back to home."),
-                         for: .normal)
-    return closeButton
   }()
 
   var cat: Cat?
@@ -101,22 +107,27 @@ class CatViewController: UIViewController {
     view.addSubview(errorLabel)
 
     NSLayoutConstraint.activate([
+      activityIndicator.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                             constant: LayoutConstants.generalOffset),
+      activityIndicator.centerXAnchor.constraint(equalTo: catView.centerXAnchor),
+
+      catNameLabel.topAnchor.constraint(equalTo: catView.bottomAnchor,
+                                      constant: LayoutConstants.generalOffset),
+      catNameLabel.leadingAnchor.constraint(equalTo: catView.layoutMarginsGuide.leadingAnchor),
+      catNameLabel.trailingAnchor.constraint(equalTo: catView.layoutMarginsGuide.trailingAnchor),
+
+      catView.heightAnchor.constraint(equalTo: catView.widthAnchor),
       catView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,
                                        constant: LayoutConstants.generalOffset),
       catView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
                                         constant: -1 * LayoutConstants.generalOffset),
-      catView.topAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.topAnchor,
+      catView.topAnchor.constraint(greaterThanOrEqualTo: closeButton.bottomAnchor,
                                    constant: LayoutConstants.topToImageViewOffset),
 
-      errorLabel.topAnchor.constraint(equalTo: catView.bottomAnchor,
+      errorLabel.topAnchor.constraint(equalTo: catNameLabel.bottomAnchor,
                                       constant: LayoutConstants.generalOffset),
       errorLabel.leadingAnchor.constraint(equalTo: catView.layoutMarginsGuide.leadingAnchor),
-      errorLabel.trailingAnchor.constraint(equalTo: catView.layoutMarginsGuide.trailingAnchor),
-
-      activityIndicator.bottomAnchor.constraint(equalTo: catView.bottomAnchor,
-                                      constant: -1 * LayoutConstants.generalOffset),
-      activityIndicator.centerXAnchor.constraint(equalTo: catView.centerXAnchor)
-
+      errorLabel.trailingAnchor.constraint(equalTo: catView.layoutMarginsGuide.trailingAnchor)
       ])
   }
 
@@ -142,13 +153,11 @@ class CatViewController: UIViewController {
   }
 
   func updateState() {
-    if cat != nil {
-      if cat?.url != nil {
-        state = .doneLoading
-      } else {
-        state = .inError
-      }
-    } else if imageRequest != nil {
+    guard state != .doneLoading else {
+      return
+    }
+
+    if imageRequest != nil {
       state = .isLoading
     } else if error != nil {
       state = .inError
@@ -161,6 +170,9 @@ class CatViewController: UIViewController {
     switch state {
     case .doneLoading:
       catNameLabel.text = cat?.identifier
+      errorLabel.text = nil
+
+      activityIndicator.stopAnimating()
       return
 
     case .inError:
@@ -175,6 +187,7 @@ class CatViewController: UIViewController {
 
     case .isLoading:
       activityIndicator.startAnimating()
+      catNameLabel.text = cat?.identifier
       errorLabel.text = nil
 
     case .needsLoading:
@@ -185,6 +198,7 @@ class CatViewController: UIViewController {
       }
 
       activityIndicator.startAnimating()
+      catNameLabel.text = cat?.identifier
       errorLabel.text = nil
 
       // If there's nothing to load from, we must wait for it to be set.
@@ -197,23 +211,27 @@ class CatViewController: UIViewController {
         update()
         return
       }
-
-      catView.af_setImage(withURLRequest: imageRequest,
-                          placeholderImage: UIImage(named: "CatPlaceholder"),
-                          filter: nil,
-                          progress: nil,
-                          progressQueue: DispatchQueue.main,
-                          imageTransition: .crossDissolve(0.2),
-                          runImageTransitionIfCached: false) { [weak self] response  in
-                            guard response.error == nil else {
-                              self?.set(cat: self?.cat, error: response.error)
-                              return
-                            }
-                            self?.state = .doneLoading
-                            self?.update()
-      }
-
+      handleImageRequest(imageRequest)
     }
+  }
+
+  func handleImageRequest(_ imageRequest: URLRequest) {
+    catView.af_setImage(withURLRequest: imageRequest,
+                        placeholderImage: UIImage(named: StringConstants.placeholderFilename),
+                        filter: nil,
+                        progress: nil,
+                        progressQueue: DispatchQueue.main,
+                        imageTransition: .crossDissolve(0.2),
+                        runImageTransitionIfCached: false) { [weak self] response  in
+                          guard response.error == nil else {
+                            self?.set(cat: self?.cat, error: response.error)
+                            return
+                          }
+                          self?.state = .doneLoading
+                          self?.imageRequest = nil
+                          self?.update()
+    }
+
   }
 
   @objc func closeButtonDidTouch() {
