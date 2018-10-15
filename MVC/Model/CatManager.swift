@@ -12,15 +12,25 @@ import SwiftyJSON
 struct CatManager {
 
   private enum StringConstants {
-
+    static let sslScheme = "https"
   }
 
   private enum RandomCatStringConstants {
-
+    static let fileKey = "file"
+    static let host = "aws.random.cat"
+    static let path = "/meow"
   }
 
   private enum TheCatAPIStringConstants {
-
+    static let host = "api.thecatapi.com"
+    static let idKey = "id"
+    static let mimeKey = "mime_types"
+    static let mimeValueGif = "gif"
+    static let mimeValueJpg = "jpg"
+    static let path = "/v1/images/search"
+    static let sizeKey = "size"
+    static let sizeValue = "small"
+    static let urlKey = "url"
   }
 
   enum ImageType {
@@ -34,22 +44,25 @@ struct CatManager {
 
     var url: URL? {
       var components = URLComponents()
-      components.scheme = "https"
+      components.scheme = StringConstants.sslScheme
 
       switch self {
       case .randomCat:
-        components.host = "aws.random.cat"
-        components.path = "/meow"
+        components.host = RandomCatStringConstants.host
+        components.path = RandomCatStringConstants.path
       case .theCatAPI(let ofType):
-        components.host = "api.thecatapi.com"
-        components.path = "/v1/images/search"
-        components.queryItems = [URLQueryItem(name: "size", value: "small")]
+        components.host = TheCatAPIStringConstants.host
+        components.path = TheCatAPIStringConstants.path
+        components.queryItems = [URLQueryItem(name: TheCatAPIStringConstants.sizeKey,
+                                              value: TheCatAPIStringConstants.sizeValue)]
 
         switch ofType {
         case .gif:
-          components.queryItems? += [URLQueryItem(name: "mime_types", value: "gif")]
+          components.queryItems? += [URLQueryItem(name: TheCatAPIStringConstants.mimeKey,
+                                                  value: TheCatAPIStringConstants.mimeValueGif)]
         case .jpg:
-          components.queryItems? += [URLQueryItem(name: "mime_types", value: "jpg")]
+          components.queryItems? += [URLQueryItem(name: TheCatAPIStringConstants.mimeKey,
+                                                  value: TheCatAPIStringConstants.mimeValueJpg)]
         }
       }
       return components.url
@@ -63,8 +76,8 @@ struct CatManager {
   }
 
   static func getCat(service site: CatSite,
-                     success: @escaping (Cat) -> Void,
-                     failure: @escaping (Error) -> Void) {
+                     success: @escaping (Cat?) -> Void,
+                     failure: @escaping (Error?) -> Void) {
     guard let url = site.url else {
       failure(CatFetchingError.urlMissing)
       return
@@ -77,10 +90,23 @@ struct CatManager {
       }
 
       let jsonObject = JSON(value)
-      let cat = Cat(identifier: jsonObject["file"].stringValue, url: jsonObject["file"].url)
+      var cat: Cat?
+      var identifier: String
+      switch site {
+      case .randomCat:
+        identifier = jsonObject[RandomCatStringConstants.fileKey].url?.lastPathComponent ?? ""
+        cat = Cat(identifier: identifier, url: jsonObject[RandomCatStringConstants.fileKey].url)
+
+      case .theCatAPI:
+        let jsonDictionaryValue = jsonObject.arrayValue.first
+        identifier = jsonDictionaryValue?[TheCatAPIStringConstants.idKey].string ?? ""
+        cat = Cat(identifier: identifier,
+                  url: jsonDictionaryValue?[TheCatAPIStringConstants.urlKey].url)
+      }
+
       success(cat)
     }, failure: { (error) in
-
+      failure(error)
     })
 
   }
