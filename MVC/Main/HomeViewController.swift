@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
 
     let catViewController = CatViewController()
     present(catViewController, animated: true, completion: nil)
-    
+
     CatManager.getCat(service: site, success: { cat in
       catViewController.set(cat: cat, error: nil)
     }, failure: { error in

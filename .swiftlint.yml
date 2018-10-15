@@ -1,3 +1,5 @@
+disabled_rules: # some rules are aren't great for our situation
+ - no_fallthrough_only
 opt_in_rules: # some rules are only opt-in
  - closure_end_indentation
  - closure_spacing
