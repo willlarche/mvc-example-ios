@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="35N-wi-lwu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,25 +17,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HRl-uK-rWV">
-                                <rect key="frame" x="98" y="251" width="179" height="29"/>
-                                <segments>
-                                    <segment title="Random Cat"/>
-                                    <segment title="The Cat API"/>
-                                </segments>
-                                <connections>
-                                    <action selector="catControlDidTouch:" destination="BYZ-38-t0r" eventType="valueChanged" id="LPl-es-ZlQ"/>
-                                </connections>
-                            </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eRr-BU-V3Z">
-                                <rect key="frame" x="154" y="299" width="67" height="29"/>
+                                <rect key="frame" x="149" y="218" width="77" height="29"/>
                                 <segments>
-                                    <segment title="gif"/>
                                     <segment title="jpg"/>
+                                    <segment title="png"/>
                                 </segments>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JtO-1f-hf3" userLabel="Info">
+                                <rect key="frame" x="163.5" y="588" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="4yS-We-OIq"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="48" id="B1s-t3-dcq"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="infoDidTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8A1-TM-o1e"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9q-iW-aDx">
-                                <rect key="frame" x="163.5" y="379" width="48" height="48"/>
+                                <rect key="frame" x="163.5" y="264" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="NdI-h6-NZC"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="48" id="dLI-6y-BnV"/>
@@ -49,21 +49,40 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="x9q-iW-aDx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="5LU-oc-i22"/>
-                            <constraint firstItem="x9q-iW-aDx" firstAttribute="top" secondItem="HRl-uK-rWV" secondAttribute="bottom" constant="100" id="G3b-OD-NTS"/>
-                            <constraint firstItem="HRl-uK-rWV" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ksb-w9-pzS"/>
-                            <constraint firstItem="eRr-BU-V3Z" firstAttribute="top" secondItem="HRl-uK-rWV" secondAttribute="bottom" constant="20" id="MoJ-Q0-WLb"/>
-                            <constraint firstItem="HRl-uK-rWV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="231" id="Pb7-Dh-kcQ"/>
+                            <constraint firstItem="eRr-BU-V3Z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="154" id="8uD-1Q-nVF"/>
                             <constraint firstItem="eRr-BU-V3Z" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="XDP-tM-ORU"/>
+                            <constraint firstItem="JtO-1f-hf3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Yjy-PA-ohi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JtO-1f-hf3" secondAttribute="bottom" constant="31" id="j15-d5-cpT"/>
+                            <constraint firstItem="x9q-iW-aDx" firstAttribute="top" secondItem="eRr-BU-V3Z" secondAttribute="bottom" constant="18" id="sAz-WH-k05"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="DKY-cF-mRL"/>
                     <connections>
-                        <outlet property="apiControl" destination="HRl-uK-rWV" id="9YG-xj-Z3G"/>
                         <outlet property="imageTypeControl" destination="eRr-BU-V3Z" id="YeK-5S-t1S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="943" y="776"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qFa-ri-cGh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="35N-wi-lwu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3XD-hQ-9y9">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="M8u-hd-W3h"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dpq-ew-WZm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="775.86206896551732"/>
         </scene>
     </scenes>
 </document>

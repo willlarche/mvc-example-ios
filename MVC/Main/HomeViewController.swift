@@ -11,40 +11,26 @@ import AcknowList
 
 class HomeViewController: UIViewController {
 
-  @IBOutlet weak var apiControl: UISegmentedControl!
   @IBOutlet weak var imageTypeControl: UISegmentedControl!
 
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-
-    refreshControls()
-  }
-
-  func refreshControls() {
-    imageTypeControl.isEnabled = apiControl.selectedSegmentIndex == 1
-  }
-
-  @IBAction func catControlDidTouch(_ sender: Any) {
-    refreshControls()
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    title = "Cat Pics"
   }
 
   @IBAction func goDidTouch(_ sender: Any) {
-    var site: CatManager.CatSite
+    var imageType: CatManager.ImageType
 
-    if apiControl.selectedSegmentIndex == 0 {
-      site = .randomCat
+    if imageTypeControl.selectedSegmentIndex == 0 {
+      imageType = .jpg
     } else {
-      if imageTypeControl.selectedSegmentIndex == 0 {
-        site = .theCatAPI(ofType: .gif)
-      } else {
-        site = .theCatAPI(ofType: .jpg)
-      }
+      imageType = .png
     }
 
     let catViewController = CatViewController()
-    present(catViewController, animated: true, completion: nil)
+    self.navigationController?.pushViewController(catViewController, animated: true)
 
-    CatManager.getCat(service: site, success: { cat in
+    CatManager.getCat(imageType: imageType, success: { cat in
       catViewController.set(cat: cat, error: nil)
     }, failure: { error in
       catViewController.set(cat: nil, error: error)

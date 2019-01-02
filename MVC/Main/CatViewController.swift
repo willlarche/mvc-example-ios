@@ -13,12 +13,10 @@ import AlamofireImage
 class CatViewController: UIViewController {
   private enum LayoutConstants {
     static let generalOffset: CGFloat = 16.0
-    static let minimumTouchTarget: CGFloat = 48.0
     static let topToImageViewOffset: CGFloat = 32.0
   }
 
   private enum StringConstants {
-    static let close = "Close"
     static let closeComment = "Close this screen and go back to home."
     static let generalError = "Oops! No kitty."
     static let generalErrorComment = "Generic error for no cat image."
@@ -59,15 +57,6 @@ class CatViewController: UIViewController {
     return catView
   }()
 
-  let closeButton: UIButton = {
-    let closeButton = UIButton(type: .system)
-    closeButton.setTitle(NSLocalizedString(StringConstants.close,
-                                           comment: StringConstants.closeComment),
-                         for: .normal)
-    closeButton.translatesAutoresizingMaskIntoConstraints = false
-    return closeButton
-  }()
-
  let errorLabel: UILabel = {
     let errorLabel = UILabel()
     errorLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
@@ -98,7 +87,6 @@ class CatViewController: UIViewController {
   }
 
   func setupViews() {
-    setupCloseButton()
     view.backgroundColor = .white
 
     view.addSubview(activityIndicator)
@@ -121,29 +109,13 @@ class CatViewController: UIViewController {
                                        constant: LayoutConstants.generalOffset),
       catView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
                                         constant: -1 * LayoutConstants.generalOffset),
-      catView.topAnchor.constraint(greaterThanOrEqualTo: closeButton.bottomAnchor,
+      catView.topAnchor.constraint(greaterThanOrEqualTo: activityIndicator.bottomAnchor,
                                    constant: LayoutConstants.topToImageViewOffset),
 
       errorLabel.topAnchor.constraint(equalTo: catNameLabel.bottomAnchor,
                                       constant: LayoutConstants.generalOffset),
       errorLabel.leadingAnchor.constraint(equalTo: catView.layoutMarginsGuide.leadingAnchor),
       errorLabel.trailingAnchor.constraint(equalTo: catView.layoutMarginsGuide.trailingAnchor)
-      ])
-  }
-
-  func setupCloseButton() {
-    closeButton.addTarget(self,
-                          action: #selector(CatViewController.closeButtonDidTouch),
-                          for: .touchUpInside)
-    view.addSubview(closeButton)
-
-    NSLayoutConstraint.activate([
-      closeButton.heightAnchor.constraint(greaterThanOrEqualToConstant: LayoutConstants.minimumTouchTarget),
-      closeButton.widthAnchor.constraint(greaterThanOrEqualToConstant: LayoutConstants.minimumTouchTarget),
-      closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-      constant: LayoutConstants.generalOffset),
-      closeButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
-      constant: -1 * LayoutConstants.generalOffset)
       ])
   }
 
@@ -200,22 +172,22 @@ class CatViewController: UIViewController {
       activityIndicator.startAnimating()
       catNameLabel.text = cat?.identifier
       errorLabel.text = nil
-
-      // If there's nothing to load from, we must wait for it to be set.
-      guard let url = cat?.url else {
-        return
-      }
-
-      imageRequest = URLRequest(url: url)
-      guard let imageRequest = imageRequest else {
-        update()
-        return
-      }
-      handleImageRequest(imageRequest)
+      handleImage()
     }
   }
 
-  func handleImageRequest(_ imageRequest: URLRequest) {
+  func handleImage() {
+    // If there's nothing to load from, we must wait for it to be set.
+    guard let url = cat?.url else {
+      return
+    }
+
+    imageRequest = URLRequest(url: url)
+    guard let imageRequest = imageRequest else {
+      update()
+      return
+    }
+
     catView.af_setImage(withURLRequest: imageRequest,
                         placeholderImage: UIImage(named: StringConstants.placeholderFilename),
                         filter: nil,
@@ -231,7 +203,6 @@ class CatViewController: UIViewController {
                           self?.imageRequest = nil
                           self?.update()
     }
-
   }
 
   @objc func closeButtonDidTouch() {
