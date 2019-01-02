@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AcknowList
 
 class HomeViewController: UIViewController {
 
@@ -48,5 +49,10 @@ class HomeViewController: UIViewController {
     }, failure: { error in
       catViewController.set(cat: nil, error: error)
     })
+  }
+
+  @IBAction func infoDidTouch(_ sender: Any) {
+    let acknowledgementsViewController = AcknowListViewController()
+    self.navigationController?.pushViewController(acknowledgementsViewController, animated: true)
   }
 }

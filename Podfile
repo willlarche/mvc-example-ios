@@ -5,14 +5,10 @@ target 'MVC' do
   use_frameworks!
 
   # Pods for MVC
+  pod 'AcknowList'
   pod 'Alamofire'
   pod 'AlamofireImage'
   pod 'SwiftyJSON'
   pod 'SwiftLint'
-
-  target 'MVCTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
 
 end
