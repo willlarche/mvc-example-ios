@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CFAB53455FAC203B3F6A8DF /* Pods_MVC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB89E874D3F1559EFB7022D /* Pods_MVC.framework */; };
 		DD08E67B216906E700BD54C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08E67A216906E700BD54C7 /* AppDelegate.swift */; };
-		DD08E67D216906E700BD54C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08E67C216906E700BD54C7 /* ViewController.swift */; };
 		DD08E680216906E700BD54C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD08E67E216906E700BD54C7 /* Main.storyboard */; };
 		DD08E682216906EA00BD54C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD08E681216906EA00BD54C7 /* Assets.xcassets */; };
 		DD08E685216906EA00BD54C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD08E683216906EA00BD54C7 /* LaunchScreen.storyboard */; };
 		DD08E690216906EA00BD54C7 /* MVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08E68F216906EA00BD54C7 /* MVCTests.swift */; };
+		DD08E69D21690AFD00BD54C7 /* CatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08E69C21690AFD00BD54C7 /* CatManager.swift */; };
+		DD08E6AA21690C2B00BD54C7 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08E6A921690C2B00BD54C7 /* Cat.swift */; };
+		DD08E6AB21690C2B00BD54C7 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08E6A921690C2B00BD54C7 /* Cat.swift */; };
+		DD08E6AD2169122B00BD54C7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08E6AC2169122B00BD54C7 /* HomeViewController.swift */; };
+		DDB2019421693E00004C7DE7 /* CatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08E69C21690AFD00BD54C7 /* CatManager.swift */; };
+		DDB20199216A7372004C7DE7 /* CatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB20198216A7372004C7DE7 /* CatViewController.swift */; };
+		DDB2019E21743E0D004C7DE7 /* Pods-MVC-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDB2019D21743E0D004C7DE7 /* Pods-MVC-acknowledgements.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,9 +33,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A25DEE72EAAB2A4C0A1CEA0 /* Pods-MVC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVC/Pods-MVC.debug.xcconfig"; sourceTree = "<group>"; };
+		5314161FA911DE157B5E4F3D /* Pods-MVC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVC.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVC/Pods-MVC.release.xcconfig"; sourceTree = "<group>"; };
+		7FB89E874D3F1559EFB7022D /* Pods_MVC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6E7037032E2DEE8EADB0951 /* Pods_MVCTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVCTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD08E677216906E700BD54C7 /* MVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD08E67A216906E700BD54C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DD08E67C216906E700BD54C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DD08E67F216906E700BD54C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DD08E681216906EA00BD54C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD08E684216906EA00BD54C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +46,12 @@
 		DD08E68B216906EA00BD54C7 /* MVCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD08E68F216906EA00BD54C7 /* MVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCTests.swift; sourceTree = "<group>"; };
 		DD08E691216906EA00BD54C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD08E69C21690AFD00BD54C7 /* CatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatManager.swift; sourceTree = "<group>"; };
+		DD08E6A921690C2B00BD54C7 /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
+		DD08E6AC2169122B00BD54C7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		DDB20196216A7025004C7DE7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
+		DDB20198216A7372004C7DE7 /* CatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewController.swift; sourceTree = "<group>"; };
+		DDB2019D21743E0D004C7DE7 /* Pods-MVC-acknowledgements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Pods-MVC-acknowledgements.plist"; path = "Pods/Target Support Files/Pods-MVC/Pods-MVC-acknowledgements.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CFAB53455FAC203B3F6A8DF /* Pods_MVC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +73,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		901277D49ACAD4AF766C5E9B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4A25DEE72EAAB2A4C0A1CEA0 /* Pods-MVC.debug.xcconfig */,
+				5314161FA911DE157B5E4F3D /* Pods-MVC.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CD34EDDEAA8D0B927287180E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7FB89E874D3F1559EFB7022D /* Pods_MVC.framework */,
+				B6E7037032E2DEE8EADB0951 /* Pods_MVCTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DD08E66E216906E700BD54C7 = {
 			isa = PBXGroup;
 			children = (
+				DDB2019D21743E0D004C7DE7 /* Pods-MVC-acknowledgements.plist */,
 				DD08E679216906E700BD54C7 /* MVC */,
 				DD08E68E216906EA00BD54C7 /* MVCTests */,
 				DD08E678216906E700BD54C7 /* Products */,
+				901277D49ACAD4AF766C5E9B /* Pods */,
+				CD34EDDEAA8D0B927287180E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,12 +115,9 @@
 		DD08E679216906E700BD54C7 /* MVC */ = {
 			isa = PBXGroup;
 			children = (
-				DD08E67A216906E700BD54C7 /* AppDelegate.swift */,
-				DD08E67C216906E700BD54C7 /* ViewController.swift */,
-				DD08E67E216906E700BD54C7 /* Main.storyboard */,
-				DD08E681216906EA00BD54C7 /* Assets.xcassets */,
-				DD08E683216906EA00BD54C7 /* LaunchScreen.storyboard */,
-				DD08E686216906EA00BD54C7 /* Info.plist */,
+				DD08E6A121690B4F00BD54C7 /* Main */,
+				DD08E6A021690B2A00BD54C7 /* Model */,
+				DD08E6A221690B7E00BD54C7 /* Other */,
 			);
 			path = MVC;
 			sourceTree = "<group>";
@@ -96,6 +131,37 @@
 			path = MVCTests;
 			sourceTree = "<group>";
 		};
+		DD08E6A021690B2A00BD54C7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DD08E6A921690C2B00BD54C7 /* Cat.swift */,
+				DD08E69C21690AFD00BD54C7 /* CatManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DD08E6A121690B4F00BD54C7 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DDB20198216A7372004C7DE7 /* CatViewController.swift */,
+				DD08E6AC2169122B00BD54C7 /* HomeViewController.swift */,
+				DD08E67E216906E700BD54C7 /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DD08E6A221690B7E00BD54C7 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				DD08E67A216906E700BD54C7 /* AppDelegate.swift */,
+				DD08E681216906EA00BD54C7 /* Assets.xcassets */,
+				DD08E686216906EA00BD54C7 /* Info.plist */,
+				DD08E683216906EA00BD54C7 /* LaunchScreen.storyboard */,
+				DDB20196216A7025004C7DE7 /* .swiftlint.yml */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +169,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD08E694216906EA00BD54C7 /* Build configuration list for PBXNativeTarget "MVC" */;
 			buildPhases = (
+				D6F52F0E7BDFB1E4C5469094 /* [CP] Check Pods Manifest.lock */,
+				DDB20195216A6F1B004C7DE7 /* SwiftLint */,
 				DD08E673216906E700BD54C7 /* Sources */,
 				DD08E674216906E700BD54C7 /* Frameworks */,
 				DD08E675216906E700BD54C7 /* Resources */,
+				AB183E7C0AEDC4436D54FE6D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -146,9 +215,11 @@
 				TargetAttributes = {
 					DD08E676216906E700BD54C7 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					DD08E68A216906EA00BD54C7 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 						TestTargetID = DD08E676216906E700BD54C7;
 					};
 				};
@@ -177,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDB2019E21743E0D004C7DE7 /* Pods-MVC-acknowledgements.plist in Resources */,
 				DD08E685216906EA00BD54C7 /* LaunchScreen.storyboard in Resources */,
 				DD08E682216906EA00BD54C7 /* Assets.xcassets in Resources */,
 				DD08E680216906E700BD54C7 /* Main.storyboard in Resources */,
@@ -192,13 +264,87 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AB183E7C0AEDC4436D54FE6D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MVC/Pods-MVC-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AcknowList/AcknowList.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AcknowList.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MVC/Pods-MVC-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6F52F0E7BDFB1E4C5469094 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MVC-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDB20195216A6F1B004C7DE7 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DD08E673216906E700BD54C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD08E67D216906E700BD54C7 /* ViewController.swift in Sources */,
+				DD08E6AA21690C2B00BD54C7 /* Cat.swift in Sources */,
 				DD08E67B216906E700BD54C7 /* AppDelegate.swift in Sources */,
+				DD08E69D21690AFD00BD54C7 /* CatManager.swift in Sources */,
+				DDB20199216A7372004C7DE7 /* CatViewController.swift in Sources */,
+				DD08E6AD2169122B00BD54C7 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +353,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD08E690216906EA00BD54C7 /* MVCTests.swift in Sources */,
+				DD08E6AB21690C2B00BD54C7 /* Cat.swift in Sources */,
+				DDB2019421693E00004C7DE7 /* CatManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,16 +506,20 @@
 		};
 		DD08E695216906EA00BD54C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A25DEE72EAAB2A4C0A1CEA0 /* Pods-MVC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MVC/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MVC/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.larche.MVC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -375,16 +527,19 @@
 		};
 		DD08E696216906EA00BD54C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5314161FA911DE157B5E4F3D /* Pods-MVC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MVC/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MVC/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.larche.MVC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -395,6 +550,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MVCTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -404,6 +560,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.larche.MVCTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MVC/Home/MVCTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MVC.app/MVC";
@@ -415,6 +573,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MVCTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -424,6 +583,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.larche.MVCTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MVC/Home/MVCTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MVC.app/MVC";
